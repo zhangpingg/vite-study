@@ -3,13 +3,14 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import viteEslint from 'vite-plugin-eslint';
+import svgr from 'vite-plugin-svgr';
 
 // 用 normalizePath 解决 window 下的路径问题
 const variablePath = normalizePath(path.resolve('./src/variable.scss'));
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), viteEslint()],
+  plugins: [react(), viteEslint(), svgr()],
   // css 相关的配置
   css: {
     // CSS Modules配置
@@ -33,5 +34,11 @@ export default defineConfig({
         })
       ]
     }
+  },
+  resolve: {
+    // 别名配置
+    alias: {
+      '@assets': path.join(__dirname, 'src/assets')
+    }
   }
-});
+})
