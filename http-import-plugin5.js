@@ -2,22 +2,24 @@
 module.exports = () => ({
   name: "esbuild:http",
   setup(build) {
-    console.log(11)
     let https = require("https");
     let http = require("http");
 
     // 1. 拦截 CDN 请求
     build.onResolve({ filter: /^https?:\/\// }, (args) => {
-      console.log(33)
       return {
-        path: new URL(args.path, args.importer).toString(),
+        path: args.path,
         namespace: "http-url",
       }
     });
+    build.onResolve({ filter: /.*/, namespace: "http-url" }, (args) => ({
+      // 重写路径
+      path: new URL(args.path, args.importer).toString(),
+      namespace: "http-url",
+    }));
 
     // 2. 通过 fetch 请求加载 CDN 资源
     build.onLoad({ filter: /.*/, namespace: "http-url" }, async (args) => {
-      console.log(22)
       let contents = await new Promise((resolve, reject) => {
         function fetch(url) {
           console.log(`Downloading: ${url}`);

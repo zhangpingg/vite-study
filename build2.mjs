@@ -36,7 +36,7 @@ function runBuild(){
   esbuild.context({
     outdir: './dist',                 // 打包产物目录
     absWorkingDir: process.cwd(),     // 当前项目根目录
-    entryPoints: ["./src/index.jsx"], // 入口文件列表
+    entryPoints: ["./src/index1.jsx"], // 入口文件列表
     format: 'esm',                    // 模块格式，包括`esm`、`commonjs`和`iife`
     splitting: true,                  // 是否开启自动拆包
     sourcemap: true,                  // 是否生成 SourceMap 文件

@@ -1,10 +1,10 @@
 const { build } = require("esbuild");
-const httpImport = require("./http-import-plugin");
+const httpImport = require("./http-import-plugin5");
 
 async function runBuild() {
   build({
     absWorkingDir: process.cwd(),
-    entryPoints: ["./src/index.jsx"],
+    entryPoints: ["./src/index2.jsx"],
     outdir: "dist",
     bundle: true,
     format: "esm",
