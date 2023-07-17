@@ -1,6 +1,6 @@
-
 // (3)transform.js (单文件转译)
 // 命令：node transform.js
+
 const { transform, transformSync } = require("esbuild");
 
 async function runTransform() {

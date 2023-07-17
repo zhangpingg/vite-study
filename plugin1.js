@@ -1,6 +1,7 @@
-// Esbuild 插件
-// const { build } = require("esbuild");
+// (4)Esbuild 插件
 // 效果：应用了 env 插件后，构建时将会被替换成 process.env 对象
+
+// const { build } = require("esbuild");
 
 let envPlugin = {
   name: 'env',
@@ -10,6 +11,7 @@ let envPlugin = {
       path: args.path,
       namespace: 'env-ns',
     }))
+    // 模块内容加载
     build.onLoad({ filter: /.*/, namespace: 'env-ns' }, () => ({
       contents: JSON.stringify(process.env),
       loader: 'json',
