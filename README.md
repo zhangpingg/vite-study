@@ -1,4 +1,3 @@
-#掘金vite-esbuild例子
-
-pnpm init：创建 package.json
-pnpm i esbuild
+(1) npm run build
+(2) node build.js
+(2) node watch.js
